@@ -5,10 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 import seedu.address.model.room.Room;
-import seedu.address.model.room.RoomNumber;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -26,7 +26,8 @@ public class Person {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
 
-    //additional field
+    // Additional field
+    // Can be null
     private final Room room;
 
     /**
@@ -38,7 +39,7 @@ public class Person {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.room = new Room(new RoomNumber("999"));
+        this.room = null;
         this.tags.addAll(tags);
     }
 
@@ -77,8 +78,8 @@ public class Person {
         return address;
     }
 
-    public Room getRoom() {
-        return room;
+    public Optional<Room> getRoom() {
+        return Optional.ofNullable(room);
     }
 
     /**
